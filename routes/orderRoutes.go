@@ -17,12 +17,12 @@ func InitOrderRoute(r *gin.Engine) {
 	orderRoute := r.Group("/order")
 	orderRoute.Use(userAuth())
 	//获取订单数据
-	orderRoute.GET("/list", middleware.MySQLMid(readMySQL, "readMySQL"), orderCtrl.GetOrderList)
+	orderRoute.GET("/list", middleware.SetMySQL(readMySQL, "readMySQL"), orderCtrl.GetOrderList)
 	{
-		changeOrderRoute := orderRoute.Group("/changeOrder").Use(middleware.MySQLMid(writeMySQL, "writeMySQL"))
+		changeOrderRoute := orderRoute.Group("/changeOrder").Use(middleware.SetMySQL(writeMySQL, "writeMySQL"))
 		{
 			//保存订单数据
-			changeOrderRoute.POST("/saveOrder", middleware.RabbitMQMid(rbmq), middleware.RedisMid(redis), orderCtrl.SaveOrder)
+			changeOrderRoute.POST("/saveOrder", middleware.SetRabbitMQ(rbmq), middleware.SetRedis(redis), orderCtrl.SaveOrder)
 			//改变订单状态
 			changeOrderRoute.POST("/changeOrderState", orderCtrl.ChangeOrderState)
 			//改变订单的取消状态

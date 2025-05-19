@@ -12,7 +12,7 @@ func InitAnnRoute(r *gin.Engine) {
 	annRoute := r.Group("/announcement")
 	{
 		//获取公告
-		annRoute.Use(middleware.RedisMid(redis)).GET("/get", annCtrl.GetAnn)
+		annRoute.Use(middleware.SetRedis(redis)).GET("/get", annCtrl.GetAnn)
 		//删除公告
 		annRoute.POST("/delete", annCtrl.DeleteAnn)
 	}

@@ -6,7 +6,7 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-func RedisMid(redis *redis.Client) gin.HandlerFunc {
+func SetRedis(redis *redis.Client) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if redis == nil {
 			fmt.Println("RedisMid未连接到Redis！")

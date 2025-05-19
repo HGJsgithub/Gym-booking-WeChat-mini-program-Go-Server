@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func MySQLMid(mysql *gorm.DB, key string) gin.HandlerFunc {
+func SetMySQL(mysql *gorm.DB, key string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if mysql == nil {
 			fmt.Println("MySQLMid未获取MySQL连接！")

@@ -6,7 +6,7 @@ import (
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
-func RabbitMQMid(rbmq *amqp.Connection) gin.HandlerFunc {
+func SetRabbitMQ(rbmq *amqp.Connection) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if rbmq == nil {
 			fmt.Println("RabbitMQMid未连接到RabbitMQ！")

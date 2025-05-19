@@ -35,7 +35,7 @@ func userAuth() gin.HandlerFunc {
 
 func InitUserRoute(r *gin.Engine) {
 	mysql := database.ConnectToMySQL()
-	userRoute := r.Group("/user").Use(middleware.MySQLMid(mysql, "mysql"))
+	userRoute := r.Group("/user").Use(middleware.SetMySQL(mysql, "mysql"))
 	{
 		//用户注册
 		userRoute.POST("/registration", registration.Registration)

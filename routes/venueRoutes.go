@@ -16,8 +16,8 @@ func InitVenueRoutes(r *gin.Engine) {
 	{
 		state := venueRoutes.Group("/state")
 		{
-			state.GET("/table", middleware.MySQLMid(readMySQL, "readMySQL"), getVenueState.GetStateTable)
-			state.POST("/change", middleware.MySQLMid(writeMySQL, "writeMySQL"), middleware.RedisMid(redis), changeVenueState.ChangeVenueState)
+			state.GET("/table", middleware.SetMySQL(readMySQL, "readMySQL"), getVenueState.GetStateTable)
+			state.POST("/change", middleware.SetMySQL(writeMySQL, "writeMySQL"), middleware.SetRedis(redis), changeVenueState.ChangeVenueState)
 		}
 	}
 }
