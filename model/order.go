@@ -14,7 +14,7 @@ type VenueOrderDetail struct {
 type Order struct {
 	ID          int64            `json:"id"`
 	UserID      int64            `json:"userID"`
-	State       string           `gorm:"type:varchar(3)" json:"state"`
+	State       string           `gorm:"type:varchar(8)" json:"state"`
 	VenueType   string           `gorm:"type:varchar(10)" json:"venueType"`
 	Count       int              `gorm:"type:tinyint" json:"count"`
 	BookingDate string           `gorm:"type:varchar(10)" json:"bookingDate"`

@@ -18,7 +18,7 @@ func main() {
 	//创建数据库表并赋值
 	initialize.AutoMigrate(mysql)
 	initialize.CreateAnnData(mysql)
-	initVenueStateTable.CreateVenueStateTableData(mysql, "badminton", 6)
+	initVenueStateTable.CreateVenueStateTableData(mysql, "badminton", 4)
 	initVenueStateTable.CreateVenueStateTableData(mysql, "tableTennis", 3)
 	initVenueStateTable.CreateVenueStateTableData(mysql, "tennis", 2)
 

@@ -1,6 +1,7 @@
 package orderCtrl
 
 import (
+	"Gym_booking_WeChat_mini_program/constDefine"
 	"Gym_booking_WeChat_mini_program/controller/getDBFromContext"
 	"Gym_booking_WeChat_mini_program/model"
 	"github.com/gin-gonic/gin"
@@ -22,7 +23,7 @@ func GetOrderList(c *gin.Context) {
 	state := c.Query("state")
 	var orderList []model.Order
 	mysql.Where(map[string]interface{}{"user_id": userID, "state": state}).Find(&orderList)
-	if len(orderList) > 0 && orderList[0].State == "待支付" {
+	if len(orderList) > 0 && orderList[0].State == constDefine.Pending {
 		remainingTime := int(orderList[0].ExpireAt.Sub(time.Now()).Seconds())
 		remainingMinutes := remainingTime / 60
 		remainingSeconds := remainingTime % 60
