@@ -1,0 +1,19 @@
+[mysql]
+Host = "192.168.3.5"
+Port = "3306"
+User = "root"
+Password = "yyyyyy"
+DBName = "gym_booking_wechat_mini_program"
+Charset = "utf8mb4"
+ParseTime = "True"
+Loc = "Local"
+
+[redis]
+Address = "192.168.3.5:6379"
+DB = 0
+
+#[rabbitMQ]
+#Admin = "guest"
+#Password = "guest"
+#Host = "192.168.3.5"
+#Post = "5672"

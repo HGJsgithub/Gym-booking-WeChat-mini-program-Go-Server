@@ -1,0 +1,44 @@
+services:
+  server:
+    container_name: go_server
+    image: go_server
+    build: .
+    volumes:
+      - C:\Workspace\Go Projects\Gym-booking-WeChat-mini-program:/workspace
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    container_name: MySQL
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=yyyyyy
+    volumes:
+      - C:\WorkSpace\MySQL Data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+  redis:
+    container_name: MyRedis
+    image: redis
+    volumes:
+      - C:\WorkSpace\Redis Data:/data
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+#  rabbitMQ:
+#    container_name: MyRabbitMQ
+#    image: rabbitmq:4.1.0-management
+#    volumes:
+#      - C:\WorkSpace\RabbitMQ Data:/var/lib/rabbitmq
+#    ports:
+#      - "15672:15672"
+#      - "5672:5672"
+#    expose:
+#      - 5672
